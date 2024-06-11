@@ -83,7 +83,8 @@ option {
 main {
   width: 100%;
   height: auto;
-  padding-top: 15%;
+  min-height: 800px;
+  padding-top: 10%;
   color: white;
   font-family: "Fira Sans", sans-serif;
   font-optical-sizing: auto;
@@ -101,6 +102,13 @@ main {
   background-color: rgb(0, 22, 119);
   border: 4px solid rgb(255, 255, 255);
   border-radius: 10px;
+}
+
+.cons {
+  width: 90%;
+  height: auto;
+  margin-left: 5%;
+  text-align: center;
 }
 
 .section-title {

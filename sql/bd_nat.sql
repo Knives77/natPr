@@ -89,9 +89,9 @@ CREATE TABLE `nadadores` (
 --
 
 INSERT INTO `nadadores` (`ID`, `Nombre`, `Edad`, `Sexo`, `Email`, `Foto`) VALUES
-(6, 'Juan Pérez', 25, 'Masculino', 'juan@example.com', '../img/upload/nadadores/juan_perez.jpg'),
-(7, 'María García', 28, 'Femenino', 'maria@example.com', '../img/upload/nadadores/maria_garcia.jpg'),
-(8, 'Carlos Rodríguez', 30, 'Masculino', 'carlos@example.com', '../img/upload/nadadores/carlos_rodriguez.jpg');
+(1, 'Juan Pérez', 25, 'Masculino', 'juan@example.com', '../img/upload/nadadores/juan_perez.jpg'),
+(2, 'María García', 28, 'Femenino', 'maria@example.com', '../img/upload/nadadores/maria_garcia.jpg'),
+(3, 'Carlos Rodríguez', 30, 'Masculino', 'carlos@example.com', '../img/upload/nadadores/carlos_rodriguez.jpg');
 
 -- --------------------------------------------------------
 
