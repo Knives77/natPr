@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teléfonos</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="titulo">
+        <h1>NATTT</h1>
+      </div>
+      <nav>
+        <div class="nav-item">
+          <select class="nav-btn" id="loby">
+            <option selected value="principal">Principal</option>
+            <option value="galeria">Galeria</option>
+          </select>
+        </div>
+        <div class="nav-item">
+          <select class="nav-btn" id="nad">
+            <option selected disabled>Nadadores</option>
+            <option value="consulta1">Consulta</option>
+            <option value="altas1">Altas</option>
+            <option value="bajas1">Bajas</option>
+            <option value="editar1">Editar</option>
+          </select>
+        </div>
+        <div class="nav-item">
+          <select class="nav-btn" id="ent">
+            <option selected disabled>Entrenadores</option>
+            <option value="consulta2">Consulta</option>
+            <option value="altas2">Altas</option>
+            <option value="bajas2">Bajas</option>
+            <option value="editar2">Editar</option>
+          </select>
+        </div>
+        <div class="nav-item">
+          <select class="nav-btn" id="pis">
+            <option selected disabled>Piscinas</option>
+            <option value="consulta3">Consulta</option>
+            <option value="altas3">Altas</option>
+            <option value="bajas3">Bajas</option>
+            <option value="editar3">Editar</option>
+          </select>
+        </div>
+        <div class="nav-item">
+          <select class="nav-btn" id="eq">
+            <option selected disabled>Equipos</option>
+            <option value="consulta4">Consulta</option>
+            <option value="altas4">Altas</option>
+            <option value="bajas4">Bajas</option>
+            <option value="editar4">Editar</option>
+          </select>
+        </div>
+        <div class="close-btn">
+          <button class="cerrar" id="cerrar">
+            <i class="fi fi-br-cross"></i>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main style="background-image: url('./img/fondos/pis1.jpg')">
+      <h2 class="section-title">
+        Bienvenidos a Nuestra Institución de Natación
+      </h2>
+      <div class="content" id="content">
+        <p class="description">
+          En nuestra institución, nos dedicamos a proporcionar la mejor
+          formación y entrenamiento en natación para todas las edades. Nuestro
+          objetivo es fomentar un ambiente seguro y divertido donde cada nadador
+          pueda alcanzar su máximo potencial.
+        </p>
+        <img src="./img/nadar.jpg" alt="Piscina" class="featured-image" />
+      </div>
+
+      <div class="galeria hidden" id="galeria">
+        <h2>Galeria</h2>
+        <section class="gal">
+          <img src="./img/1.png" alt="m" />
+          <img src="./img/2.jpg" alt="m" />
+          <img src="./img/3.jpg" alt="m" />
+          <img src="./img/nadar.jpg" alt="m" />
+        </section>
+      </div>
+      <br /><br /><br />
+    </main>
+    <footer>
+      <div class="content-footer">
+        <p class="pp">&copy; 2024 Celulares. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+    <script src="./js/script.js"></script>
+  </body>
+</html>

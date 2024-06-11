@@ -1,0 +1,210 @@
+/* Fuentes */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100..900&display=swap");
+@import url("https://cdn-uicons.flaticon.com/2.4.0/uicons-bold-rounded/css/uicons-bold-rounded.css");
+
+/* Estilos generales */
+body {
+  background-color: #000000;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  height: 18%;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  background-color: #0059ff;
+  position: fixed;
+  z-index: 3;
+}
+
+.titulo {
+  height: 70%;
+  width: 100%;
+  padding-top: 10px;
+}
+
+h1 {
+  height: 80%;
+  width: 100%;
+  padding-top: 0px;
+  text-align: center;
+  margin-top: 0px;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 70px;
+  margin-bottom: 0px;
+}
+
+nav {
+  height: 20%;
+  width: 100%;
+  background-color: #0059ff;
+  padding-left: 1%;
+  padding-top: 0px;
+}
+
+/* Estilos para los elementos de navegación */
+.nav-item {
+  float: left;
+  height: 100%;
+  width: 19%;
+}
+
+.nav-btn {
+  width: 80%;
+  height: 100%;
+  background-color: #0059ff;
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 18px;
+}
+
+option {
+  text-align: center;
+}
+
+.close-btn {
+  width: 3%;
+  height: 100%;
+  float: left;
+  background-color: #0059ff;
+  border: 0px;
+}
+
+/* Estilos para el contenido principal */
+main {
+  width: 100%;
+  height: auto;
+  padding-top: 15%;
+  color: white;
+  font-family: "Fira Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 22px;
+  background-image: url("../img/10.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content {
+  width: 90%;
+  height: auto;
+  margin-left: 5%;
+  text-align: center;
+  background-color: rgb(0, 22, 119);
+  border: 4px solid rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.section-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 36px;
+  color: #003366;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.description {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.featured-image {
+  width: 40%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.cerrar {
+  width: 100%;
+  height: 100%;
+  background-color: #0059ff;
+  border: 0px;
+}
+
+i {
+  color: white;
+}
+
+footer {
+  width: 100%;
+  height: 20%;
+  background-color: #1c1d2c;
+  color: white;
+  position: relative;
+  text-align: center;
+}
+
+.content-footer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pp {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  padding: 10px;
+}
+
+/* Estilos adicionales */
+.hidden {
+  display: none;
+}
+
+.text {
+  width: 60%;
+  height: auto;
+  float: left;
+  text-align: justify;
+}
+
+.imgC {
+  width: 38%;
+  height: auto;
+  padding-top: 5%;
+}
+
+.galeria {
+  width: 90%;
+  height: 500px;
+  text-align: center;
+  padding-left: 5%;
+}
+
+section {
+  display: flex;
+  width: 80%;
+  height: 400px;
+  padding-left: 10%;
+}
+
+section img {
+  width: 0px;
+  flex-grow: 1;
+  object-fit: cover;
+  opacity: 0.8;
+  transition: 0.5s ease;
+}
+
+section img:hover {
+  cursor: crosshair;
+  width: 300px;
+  opacity: 1;
+  filter: contrast(120%);
+}
