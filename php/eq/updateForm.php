@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["editarR"])) {
     $id = $_GET["editarR"];
     include_once "../conex.php";
 
-    $sql = "SELECT * FROM entrenadores WHERE id = ?";
+    $sql = "SELECT * FROM equiposnatacion WHERE id = ?";
     if ($stmt = $conexion->prepare($sql)) {
         $stmt->bind_param("i", $id);
 
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["editarR"])) {
 
         main {
             /* padding-top: 150px; */
-            background-image: url('../../img/fondos/pis3.jpg');
+            background-image: url('../../img/fondos/pis5.jpg');
             color: white;
             text-align: center;
         }
@@ -196,11 +196,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["editarR"])) {
             </div>
             <div class="nav-item">
                 <select class="nav-btn" id="ent">
-                    <option disabled>Entrenadores</option>
+                    <option selected disabled>Entrenadores</option>
                     <option value="consulta2">Consulta</option>
                     <option value="altas2">Altas</option>
                     <option value="bajas2">Bajas</option>
-                    <option selected value="editar2">Editar</option>
+                    <option value="editar2">Editar</option>
                 </select>
             </div>
             <div class="nav-item">
@@ -218,7 +218,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["editarR"])) {
                     <option value="consulta4">Consulta</option>
                     <option value="altas4">Altas</option>
                     <option value="bajas4">Bajas</option>
-                    <option value="editar4">Editar</option>
+                    <option selected value="editar4">Editar</option>
                 </select>
             </div>
             <div class="close-btn">
@@ -230,34 +230,35 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["editarR"])) {
     </header>
     <main>
         <h2 class="section-title">
-            Editar-Entrenadores
+            Editar-Equipos
         </h2>
         <div class="cons">
             <div class="form-content">
                 <div class="form-container">
-                    <h2>Editar Registro de Entrenadores</h2>
+                    <h2>Editar Registro de Piscinas
+                    </h2>
                     <form action="actualizar.php" method="POST" enctype="multipart/form-data"
                         onsubmit="confirmarEditar(event)">
                         <input type="hidden" name="id" value="<?php echo $registro['ID']; ?>">
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" value="<?php echo $registro['Nombre']; ?>"
-                            required>
-
-                        <label for="especialidad">Especialidad:</label>
-                        <input type="text" id="especialidad" value="<?php echo $registro['Especialidad']; ?>"
-                            name="especialidad" required>
-
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" value="<?php echo $registro['Email']; ?>"
+                        <label for="nombre">Nombre de equipo:</label>
+                        <input type="text" id="nombre" value="<?php echo $registro['NombreEquipo']; ?>" name="nombre"
                             required><br>
 
-                        <label for="telefono">Teléfono:</label>
-                        <input type="tel" id="telefono" name="telefono" value="<?php echo $registro['Telefono']; ?>"
-                            required><br><br>
+                        <label for="especialidad">Entrenador:</label>
+                        <input type="text" id="entrenador" value="<?php echo $registro['Entrenador']; ?>"
+                            name="entrenador" required><br>
+
+                        <label for="email">Integrantes:</label>
+                        <input type="number" id="numnadadores" value="<?php echo $registro['NumNadadores']; ?>"
+                            name="numnadadores" required min="0"><br>
+
+                        <label for="telefono">Categoría: </label>
+                        <input type="text" id="categoria" name="categoria" value="<?php echo $registro['Categoria']; ?>"
+                            required><br>
 
                         <label for="foto">Foto:</label><br><br>
                         <label for="imagenC">Mantener imagen: </label>
-                        <input type="checkbox" checked name="imgC" id="imgC"><br>
+                        <input type="checkbox" checked name="imgC" id="imgC"><br><br>
                         <img src="<?php echo $registro['Foto']; ?>" alt="a">
 
                         <input disabled required type="file" id="foto" name="foto" accept="image/*"><br>
