@@ -1,3 +1,47 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["editarR"])) {
+    $id = $_GET["editarR"];
+    include_once "../conex.php";
+
+    $sql = "SELECT * FROM nadadores WHERE id = ?";
+    if ($stmt = $conexion->prepare($sql)) {
+        $stmt->bind_param("i", $id);
+
+        // Ejecutar la declaración
+        if ($stmt->execute()) {
+            $resultado = $stmt->get_result();
+            if ($resultado->num_rows > 0) {
+                $registro = $resultado->fetch_assoc();
+            } else {
+                echo "<script>
+                alert('No se encontró el registro con el ID proporcionado.');
+                location.href = './editar.php';
+                </script>";
+                exit;
+            }
+        } else {
+            echo "Error al seleccionar el registro: " . $stmt->error;
+            exit;
+        }
+
+        // Cerrar la declaración
+        $stmt->close();
+    } else {
+        echo "Error al preparar la declaración: " . $conexion->error;
+        exit;
+    }
+
+    // Cerrar la conexión
+    $conexion->close();
+} else {
+    echo "<script>
+    alert('ID no proporcionado.');
+    location.href = './editar.php';
+    </script>";
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -116,6 +160,16 @@
         input[type="reset"]:hover {
             background-color: #0c5dbb;
         }
+
+        #imgC {
+            width: 15px;
+            height: 15px;
+        }
+
+        img {
+            width: 50%;
+            height: auto;
+        }
     </style>
 </head>
 
@@ -135,9 +189,9 @@
                 <select class="nav-btn" id="nad">
                     <option disabled>Nadadores</option>
                     <option value="consulta1">Consulta</option>
-                    <option selected value="altas1">Altas</option>
+                    <option value="altas1">Altas</option>
                     <option value="bajas1">Bajas</option>
-                    <option value="editar1">Editar</option>
+                    <option selected value="editar1">Editar</option>
                 </select>
             </div>
             <div class="nav-item">
@@ -176,33 +230,40 @@
     </header>
     <main>
         <h2 class="section-title">
-            Altas-Nadadores
+            Editar-Nadadores
         </h2>
         <div class="cons">
             <div class="form-content">
                 <div class="form-container">
-                    <h2>Formulario de Registro de Nadadores</h2>
-                    <form action="subir.php" method="POST" enctype="multipart/form-data"
-                        onsubmit="confirmarSubida(event)">
+                    <h2>Editar Registro de Nadadores</h2>
+                    <form action="actualizar.php" method="POST" enctype="multipart/form-data"
+                        onsubmit="confirmarEditar(event)">
+                        <input type="hidden" name="id" value="<?php echo $registro['ID']; ?>">
                         <label for=" nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" required><br>
+                        <input type="text" id="nombre" name="nombre" value="<?php echo $registro['Nombre']; ?>"
+                            required><br>
 
                         <label for="edad">Edad:</label>
-                        <input type="number" id="edad" name="edad" required><br>
+                        <input type="number" id="edad" name="edad" value="<?php echo $registro['Edad']; ?>"
+                            required><br>
 
                         <label for="sexo">Sexo:</label>
                         <select id="sexo" name="sexo" required>
-                            <option class="opt" value="Masculino">Masculino</option>
-                            <option class="opt" value="Femenino">Femenino</option>
+                            <option class="opt" value="Masculino" <?php echo ($registro['Sexo'] == 'Masculino') ? 'selected' : ''; ?>>Masculino</option>
+                            <option class="opt" value="Femenino" <?php echo ($registro['Sexo'] == 'Femenino') ? 'selected' : ''; ?>>Femenino</option>
                         </select><br>
 
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required><br>
-
+                        <input type="email" value="<?php echo $registro['Email']; ?>" id="email" name="email"
+                            required><br>
                         <label for="foto">Foto:</label><br>
-                        <input required type="file" id="foto" name="foto" accept="image/*"><br>
+                        <label for="imagenC">Mantener imagen: </label>
+                        <input type="checkbox" checked name="imgC" id="imgC"><br>
+                        <img src="<?php echo $registro['Foto']; ?>" alt="a">
 
-                        <input type="submit" value="Enviar" id="subir">
+                        <input disabled required type="file" id="foto" name="foto" accept="image/*"><br>
+
+                        <input type="submit" value="Editar" id="editar">
                         <input type="reset" value="Reset">
                     </form>
                 </div>

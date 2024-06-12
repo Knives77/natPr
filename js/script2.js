@@ -6,7 +6,7 @@ const pis = document.getElementById("pis");
 const eq = document.getElementById("eq");
 const conf = document.getElementById("imgC");
 
-let exit = false;
+let exit = true;
 
 function confirmarEliminacion(event) {
   var id = document.getElementById("eliminar").value;
@@ -21,6 +21,14 @@ function confirmarEliminacion(event) {
 function confirmarSubida(event) {
   var id = document.getElementById("subir").value;
   var confirmar = confirm("¿Estás seguro de que deseas subir el registro ?");
+  if (!confirmar) {
+    event.preventDefault(); // Evita el envío del formulario
+  }
+}
+
+function confirmarEditar(event) {
+  var id = document.getElementById("editar").value;
+  var confirmar = confirm("¿Estás seguro de que deseas editar el registro ?");
   if (!confirmar) {
     event.preventDefault(); // Evita el envío del formulario
   }
@@ -90,6 +98,7 @@ pis.addEventListener("change", function () {
     location.href = "../pis/editar.php";
   }
 });
+
 eq.addEventListener("change", function () {
   const option5 = eq.value;
   if (option5 == "consulta4") {
@@ -105,8 +114,10 @@ eq.addEventListener("change", function () {
 
 conf.addEventListener("change", function () {
   if (this.checked) {
-    document.getElementById("imagen").disabled = false;
-  } else {
+    document.getElementById("foto").disabled = true;
     document.getElementById("imagen").disabled = true;
+  } else {
+    document.getElementById("foto").disabled = false;
+    document.getElementById("imagen").disabled = false;
   }
 });
