@@ -5,37 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     include_once "../conex.php";
 
-    if ($imgC) {
-        // Verificar si se ha enviado el formulario
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            // Obtener datos del formulario
-            $nombre = $_POST['nombre'];
-            $edad = $_POST['edad'];
-            $sexo = $_POST['sexo'];
-            $email = $_POST['email'];
-
-            // Preparar la consulta SQL
-            $sql = "UPDATE nadadores SET Nombre=?, Edad=?, Sexo=?, Email=? WHERE id=?";
-            $declaracion = $conexion->prepare($sql);
-            $declaracion->bind_param("sissi", $nombre, $edad, $sexo, $email, $id);
-
-            // Ejecutar la consulta
-            if ($declaracion->execute()) {
-                echo "El registro se ha agregado correctamente.";
-            } else {
-                echo "Error al agregar el registro: " . $declaracion->error;
-            }
-            echo "  <script>
-                alert('Agregado con exito');
-                location.href = './consulta.php';
-            </script>";
-            exit;
-        } else {
-            // Si se intenta acceder al script sin enviar datos por POST
-            echo "Acceso no permitido.";
-        }
-    } else {
+    if (!$imgC) {
         // Verificar si se ha enviado el formulario
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -70,6 +40,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Cerrar la conexión
             $conexion->close();
+            echo "  <script>
+                    alert('Agregado con exito');
+                    location.href = './consulta.php';
+                </script>";
+            exit;
+        } else {
+            // Si se intenta acceder al script sin enviar datos por POST
+            echo "Acceso no permitido.";
+        }
+    } else {
+
+
+        // Verificar si se ha enviado el formulario
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            // Obtener datos del formulario
+            $nombre = $_POST['nombre'];
+            $edad = $_POST['edad'];
+            $sexo = $_POST['sexo'];
+            $email = $_POST['email'];
+
+            // Preparar la consulta SQL
+            $sql = "UPDATE nadadores SET Nombre=?, Edad=?, Sexo=?, Email=? WHERE id=?";
+            $declaracion = $conexion->prepare($sql);
+            $declaracion->bind_param("sissi", $nombre, $edad, $sexo, $email, $id);
+
+            // Ejecutar la consulta
+            if ($declaracion->execute()) {
+                echo "El registro se ha agregado correctamente.";
+            } else {
+                echo "Error al agregar el registro: " . $declaracion->error;
+            }
             echo "  <script>
                 alert('Agregado con exito');
                 location.href = './consulta.php';

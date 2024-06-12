@@ -11,15 +11,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Obtener datos del formulario
             $nombre = $_POST['nombre'];
-            $especialidad = $_POST['especialidad'];
-            $email = $_POST['email'];
-            $telefono = $_POST['telefono'];
+            $ubicacion = $_POST['ubicacion'];
+            $metroscuadrados = $_POST['metroscuadrados'];
+            $profundidad = $_POST['profundidad'];
             $foto = $_FILES['foto']['name'];
+            $foto_tmp = $_FILES['foto']['tmp_name'];
+
+            // Mover la foto subida a una carpeta en el servidor
+            $upload_dir = '../img/upload/piscinas/';
+            $foto_path = $upload_dir . basename($foto);
+
+            // Mover la imagen a la carpeta de destino
+            if (!move_uploaded_file($foto_tmp, $foto_path)) {
+                die("Error al mover el archivo.");
+            }
 
             // Preparar la consulta SQL
-            $sql = "UPDATE entrenadores SET Nombre=?, Especialidad=?, Email=?, Telefono=? WHERE id=?";
+            $sql = "UPDATE piscinas SET Nombre=?, Ubicacion=?, MetrosCuadrados=?, Profundidad=?, Imagen=? WHERE id=?";
             $declaracion = $conexion->prepare($sql);
-            $declaracion->bind_param("ssssi", $nombre, $especialidad, $email, $telefono, $id);
+            $declaracion->bind_param("ssiisi", $nombre, $ubicacion, $metroscuadrados, $profundidad, $foto_path, $id);
 
             // Ejecutar la consulta
             if ($declaracion->execute()) {
@@ -42,24 +52,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Obtener datos del formulario
             $nombre = $_POST['nombre'];
-            $especialidad = $_POST['especialidad'];
-            $email = $_POST['email'];
-            $telefono = $_POST['telefono'];
-            $foto = $_FILES['foto']['name'];
-            $foto_tmp = $_FILES['foto']['tmp_name'];
+            $ubicacion = $_POST['ubicacion'];
+            $metroscuadrados = $_POST['metroscuadrados'];
+            $profundidad = $_POST['profundidad'];
 
-            // Mover la foto subida a una carpeta en el servidor
-            $upload_dir = '../img/upload/entrenadores/';
-            $foto_path = $upload_dir . basename($foto);
-
-            // Mover la imagen a la carpeta de destino
-            if (!move_uploaded_file($foto_tmp, $foto_path)) {
-                die("Error al mover el archivo.");
-            }
-
-            $sql = "UPDATE entrenadores SET Nombre=?, Especialidad=?, Email=?, Telefono=?, Foto=? WHERE id=?";
+            // Preparar la consulta SQL
+            $sql = "UPDATE piscinas SET Nombre=?, Ubicacion=?, MetrosCuadrados=?, Profundidad=? WHERE id=?";
             $declaracion = $conexion->prepare($sql);
-            $declaracion->bind_param("sssssi", $nombre, $especialidad, $email, $telefono, $foto_path, $id);
+            $declaracion->bind_param("ssiii", $nombre, $ubicacion, $metroscuadrados, $profundidad, $id);
 
             // Ejecutar la consulta
             if ($declaracion->execute()) {
@@ -67,9 +67,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 echo "Error al agregar el registro: " . $declaracion->error;
             }
-
-            // Cerrar la conexión
-            $conexion->close();
             echo "  <script>
                 alert('Agregado con exito');
                 location.href = './consulta.php';
