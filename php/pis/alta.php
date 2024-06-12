@@ -11,7 +11,7 @@
 
         main {
             /* padding-top: 150px; */
-            background-image: url('../../img/fondos/pis2.jpg');
+            background-image: url('../../img/fondos/pis4.jpg');
             color: white;
             text-align: center;
         }
@@ -63,7 +63,8 @@
 
         input[type="text"],
         input[type="number"],
-        input[type="email"] {
+        input[type="email"],
+        input[type="tel"] {
             width: calc(50% - 20px);
             padding: 12px;
             margin-bottom: 20px;
@@ -133,9 +134,9 @@
             </div>
             <div class="nav-item">
                 <select class="nav-btn" id="nad">
-                    <option disabled>Nadadores</option>
+                    <option selected disabled>Nadadores</option>
                     <option value="consulta1">Consulta</option>
-                    <option selected value="altas1">Altas</option>
+                    <option value="altas1">Altas</option>
                     <option value="bajas1">Bajas</option>
                     <option value="editar1">Editar</option>
                 </select>
@@ -151,9 +152,9 @@
             </div>
             <div class="nav-item">
                 <select class="nav-btn" id="pis">
-                    <option selected disabled>Piscinas</option>
+                    <option disabled>Piscinas</option>
                     <option value="consulta3">Consulta</option>
-                    <option value="altas3">Altas</option>
+                    <option selected value="altas3">Altas</option>
                     <option value="bajas3">Bajas</option>
                     <option value="editar3">Editar</option>
                 </select>
@@ -176,31 +177,28 @@
     </header>
     <main>
         <h2 class="section-title">
-            Altas-Nadadores
+            Altas-Piscinas
         </h2>
         <div class="cons">
             <div class="form-content">
                 <div class="form-container">
-                    <h2>Formulario de Registro de Nadadores</h2>
+                    <h2>Formulario de Registro de Piscinas</h2>
                     <form action="subir.php" method="POST" enctype="multipart/form-data"
                         onsubmit="confirmarSubida(event)">
-                        <label for=" nombre">Nombre:</label>
+                        <label for="nombre">Nombre:</label>
                         <input type="text" id="nombre" name="nombre" required><br>
 
-                        <label for="edad">Edad:</label>
-                        <input type="number" id="edad" name="edad" required><br>
+                        <label for="especialidad">Ubicación:</label>
+                        <input type="text" id="ubicacion" name="ubicacion" required><br>
 
-                        <label for="sexo">Sexo:</label>
-                        <select id="sexo" name="sexo" required>
-                            <option class="opt" value="Masculino">Masculino</option>
-                            <option class="opt" value="Femenino">Femenino</option>
-                        </select><br>
+                        <label for="email">Tamaño (m2):</label>
+                        <input type="number" id="metroscuadrados" name="metroscuadrados" required min="0"><br>
 
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required><br>
+                        <label for="telefono">Profundidad (m):</label>
+                        <input type="number" id="profundidad" name="profundidad" required><br><br>
 
-                        <label for="foto">Foto:</label><br>
-                        <input required type="file" id="foto" name="foto" accept="image/*"><br>
+                        <label for="foto">Foto:</label><br><br>
+                        <input required type="file" id="imagen" name="imagen" accept="image/*">
 
                         <input type="submit" value="Enviar" id="subir">
                         <input type="reset" value="Reset">
