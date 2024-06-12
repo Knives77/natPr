@@ -8,6 +8,16 @@ const conf = document.getElementById("imgC");
 
 let exit = false;
 
+function confirmarEliminacion(event) {
+  var id = document.getElementById("eliminar").value;
+  var confirmar = confirm(
+    "¿Estás seguro de que deseas eliminar el registro con ID: " + id + "?"
+  );
+  if (!confirmar) {
+    event.preventDefault(); // Evita el envío del formulario
+  }
+}
+
 loby.addEventListener("change", function () {
   const option1 = loby.value;
   if (option1 == "principal") {
