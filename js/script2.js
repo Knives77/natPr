@@ -18,6 +18,14 @@ function confirmarEliminacion(event) {
   }
 }
 
+function confirmarSubida(event) {
+  var id = document.getElementById("subir").value;
+  var confirmar = confirm("¿Estás seguro de que deseas subir el registro ?");
+  if (!confirmar) {
+    event.preventDefault(); // Evita el envío del formulario
+  }
+}
+
 loby.addEventListener("change", function () {
   const option1 = loby.value;
   if (option1 == "principal") {

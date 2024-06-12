@@ -42,6 +42,80 @@
             max-width: 100px;
             height: auto;
         }
+
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            /* display: block; */
+            margin-bottom: 8px;
+            padding-right: 10px;
+            color: #ffff;
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"] {
+            width: calc(50% - 20px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #d1d3e2;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #f7f9fc;
+            height: 10px;
+            color: black;
+        }
+
+        #sexo {
+            width: calc(50% - 20px);
+            margin-bottom: 20px;
+            padding: 3px;
+            font-size: 16px;
+            background-color: #ffff;
+        }
+
+        .opt {
+            color: black;
+        }
+
+
+        input[type="file"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #d1d3e2;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: rgba(0, 0, 0, 0.0);
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            width: 20%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #0c5dbb;
+        }
     </style>
 </head>
 
@@ -106,6 +180,32 @@
         </h2>
         <div class="cons">
             <div class="form-content">
+                <div class="form-container">
+                    <h2>Formulario de Registro de Nadadores</h2>
+                    <form action="subir.php" method="POST" enctype="multipart/form-data"
+                        onsubmit="confirmarSubida(event)">
+                        <label for=" nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required><br>
+
+                        <label for="edad">Edad:</label>
+                        <input type="number" id="edad" name="edad" required><br>
+
+                        <label for="sexo">Sexo:</label>
+                        <select id="sexo" name="sexo" required>
+                            <option class="opt" value="Masculino">Masculino</option>
+                            <option class="opt" value="Femenino">Femenino</option>
+                        </select><br>
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required><br>
+
+                        <label for="foto">Foto:</label><br>
+                        <input type="file" id="foto" name="foto" accept="image/*"><br>
+
+                        <input type="submit" value="Enviar" id="subir">
+                        <input type="reset" value="Reset">
+                    </form>
+                </div>
                 <br>
             </div>
         </div>
